@@ -1,0 +1,26 @@
+{
+  "name": "vlcn-web-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check build-only",
+    "preview": "vite preview",
+    "test:unit": "vitest",
+    "test:e2e": "playwright test",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jsdom": "^21.1.0",
+    "@types/node": "^18.14.2",
+    "jsdom": "^21.1.0",
+    "prettier": "^2.8.4",
+    "typescript": "~4.8.4",
+    "vite": "^4.1.4",
+    "vitest": "^0.29.1"
+  }
+}

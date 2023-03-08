@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "vlcn-websocket --dbDir=./dbs --schemaDir=../shared/schemas --static=./dist"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "@vlcn.io/server-websocket": "^0.7.0"
+  },
+  "devDependencies": {}
+}

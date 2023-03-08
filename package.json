@@ -1,0 +1,8 @@
+{
+  "name": "vlcn-web-project",
+  "workspaces": [
+    "app",
+    "shared",
+    "sync-server"
+  ]
+}
