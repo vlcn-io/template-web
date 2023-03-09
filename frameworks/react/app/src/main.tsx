@@ -2,6 +2,8 @@ import wasmUrl from '@vlcn.io/wa-crsqlite/crsqlite.wasm?url';
 import sqliteWasm, { SQLite3 } from '@vlcn.io/wa-crsqlite';
 import schema from 'template-web-shared/schemas/template-web-schema.sql?raw';
 import deviceWorkspaces from './deviceWorkspaces';
+import startSync from '@vlcn.io/client-websocket';
+import tblrx from '@vlcn.io/rx-tbl';
 
 async function main() {
   const sqlite = await sqliteWasm((_file) => wasmUrl);
@@ -52,10 +54,37 @@ async function main() {
   // So we can open it again next time or purge it from local storage in the future.
   deviceWorkspaces.add(dbToOpen);
 
+  // Wire up reactivity and sync.
+  const rx = tblrx(db);
+  const sync = await startSync(getConnString(), {
+    localDb: db,
+    remoteDbId: dbToOpen,
+    create: {
+      schemaName: 'todo-mvc',
+    },
+    rx,
+    worker: true,
+  });
+
   // Update the URI to include the DB name.
   // For easier sharing.
   if (requestedDB == null) {
     window.history.pushState({}, '', `?workspace=${dbToOpen}`);
+  }
+
+  const ctx = {
+    db,
+    rx,
+  };
+
+  // now mount or app!
+}
+
+function getConnString() {
+  if (import.meta.env.DEV) {
+    return `ws://${window.location.hostname}:8080/sync`;
+  } else {
+    return `wss://${window.location.hostname}/sync`;
   }
 }
 
