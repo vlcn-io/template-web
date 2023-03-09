@@ -5,13 +5,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "vlcn-websocket --dbDir=./dbs --schemaDir=../shared/schemas --static=./dist"
+    "build": "tsc",
+    "start": "npm build && node dist/server.js"
   },
   "type": "module",
   "keywords": [],
   "author": "",
   "dependencies": {
-    "@vlcn.io/server-websocket": "^0.7.0"
+    "@vlcn.io/server-websocket": "^0.7.0",
+    "@vlcn.io/server-core": "^0.7.0"
   },
   "devDependencies": {}
 }
