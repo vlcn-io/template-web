@@ -1,9 +1,12 @@
 import wasmUrl from '@vlcn.io/wa-crsqlite/crsqlite.wasm?url';
-import sqliteWasm, { SQLite3 } from '@vlcn.io/wa-crsqlite';
+import sqliteWasm from '@vlcn.io/wa-crsqlite';
 import schema from 'template-web-shared/schemas/template-web-schema.sql?raw';
 import deviceWorkspaces from './deviceWorkspaces';
 import startSync from '@vlcn.io/client-websocket';
 import tblrx from '@vlcn.io/rx-tbl';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './components/App';
 
 async function main() {
   const sqlite = await sqliteWasm((_file) => wasmUrl);
@@ -78,6 +81,8 @@ async function main() {
   };
 
   // now mount or app!
+  const root = createRoot(document.getElementById('app')!);
+  root.render(<App ctx={ctx} />);
 }
 
 function getConnString() {
