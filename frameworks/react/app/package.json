@@ -20,7 +20,8 @@
     "@vlcn.io/react": "^0.8.0",
     "@vlcn.io/rx-tbl": "^0.7.0",
     "@vlcn.io/wa-crsqlite": "^0.8.0",
-    "@vlcn.io/xplat-api": "^0.7.0"
+    "@vlcn.io/xplat-api": "^0.7.0",
+    "template-web-shared": "workspace:*"
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.0",
