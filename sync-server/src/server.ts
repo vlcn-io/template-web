@@ -14,6 +14,7 @@ const config = {
   maxOutstandingAcks: 10,
 };
 
+// >>>>> You may bring your existing server / express app and tack on the websocket server <<<<<<
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -29,7 +30,7 @@ wss.on('connection', (ws: WebSocket, request) => {
 });
 
 function authenticate(req: IncomingMessage, cb: (err: any) => void) {
-  // TODO: for you to implement authentication of the user
+  // >>>>> TODO: for you to implement authentication of the user <<<<<<
   const authHeader = req.headers['sec-websocket-protocol'] || '';
   const authToken = authHeader.split(', ')[1];
   cb(null);
