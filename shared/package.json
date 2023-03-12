@@ -5,6 +5,7 @@
   "description": "",
   "main": "index.js",
   "exports": {
+    ".": "./index.js",
     "./schemas/*": "./schemas/*"
   },
   "keywords": [],
