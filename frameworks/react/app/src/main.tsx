@@ -1,5 +1,5 @@
-import wasmUrl from '@vlcn.io/wa-crsqlite/crsqlite.wasm?url';
-import sqliteWasm from '@vlcn.io/wa-crsqlite';
+import wasmUrl from '@vlcn.io/crsqlite-wasm/crsqlite.wasm?url';
+import sqliteWasm from '@vlcn.io/crsqlite-wasm';
 import schema from 'template-web-shared/schemas/template-web-schema.sql?raw';
 import deviceWorkspaces from './deviceWorkspaces';
 import startSync from '@vlcn.io/client-websocket';
